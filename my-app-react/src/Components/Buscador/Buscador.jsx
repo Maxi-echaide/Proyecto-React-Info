@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 
-const Buscador = ({value, onChange}) => {
+const Buscador = () => {
     const [criterioBusqueda, SetCriteriobusqueda] = useState("")
     console.log(criterioBusqueda)
     return (
