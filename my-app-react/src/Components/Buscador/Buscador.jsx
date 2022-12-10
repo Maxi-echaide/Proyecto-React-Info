@@ -7,9 +7,9 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 
-const Buscador = () => {
+const Buscador = ({onBuscar}) => {
     const [criterioBusqueda, SetCriteriobusqueda] = useState("")
-    console.log(criterioBusqueda)
+    
     return (
         <Paper
           component="form"
@@ -25,7 +25,15 @@ const Buscador = () => {
             value = {criterioBusqueda}
             onChange = {(e) => {SetCriteriobusqueda(e.target.value)}}
           />
-          <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+          <IconButton 
+                type="button" 
+                sx={{ p: '10px' }} 
+                aria-label="search"
+                onClick = {() => {
+                    onBuscar (criterioBusqueda)
+                }}       
+                >
+                   
             <SearchIcon />
           </IconButton>
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
