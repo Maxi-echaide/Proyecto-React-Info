@@ -30,7 +30,7 @@ const BuscadorNoticias = () => {
                 <Buscador onBuscar = {onBuscar} />
                 
                 {isLoading && <Loading/>}
-                {noticias&& <ListaNoticias/>}
+                {noticias&& <ListaNoticias noticias ={noticias}/>}
                 {noticias&& <Paginador/>}
             </Container>
     
