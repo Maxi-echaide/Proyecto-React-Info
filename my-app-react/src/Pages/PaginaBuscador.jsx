@@ -11,14 +11,14 @@ const BuscadorNoticias = () => {
     const [noticias, setNoticias] = useState()
     const[isLoading, setIsLoading] = useState(false)
     const[cantidadPaginas, setCantidadPaginas] = useState(1)
-    const [paginaActual, setPaginaActual] = useState(1)
+    
     
      
     const[criterioBusqueda, setCriteriobusqueda] = useState("")
 
-    const onBuscar = async (criterioBusqueda) => {
+    const onBuscar = async (criterioBusqueda, pagina=1) => {
         setIsLoading(true)
-        const {articles: notis, totalResults} = await getListadoNoticias(criterioBusqueda, paginaActual)
+        const {articles: notis, totalResults} = await getListadoNoticias(criterioBusqueda, pagina)
         setCriteriobusqueda(criterioBusqueda)
         setNoticias(notis)
         setCantidadPaginas(Math.ceil(parseInt(totalResults/10)))
@@ -28,8 +28,8 @@ const BuscadorNoticias = () => {
     }   
 
     const onCambioPagina = (pagina) => {
+            onBuscar(criterioBusqueda, pagina)
             
-            setPaginaActual(pagina)
             
     }
 
@@ -40,7 +40,7 @@ const BuscadorNoticias = () => {
             </Container>
     )}
 
-     console.log (noticias)
+     
         return <Container maxWidth = "sm">
                 <Buscador onBuscar = {onBuscar} />
                 
