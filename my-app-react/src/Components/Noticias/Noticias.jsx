@@ -9,13 +9,17 @@ import Typography from '@mui/material/Typography';
 
 
 
- const Noticias = ({noticia}) => {
+ const Noticias = ({noticia,onChange}) => {
+  const onCardClick = ()=> {
+    onChange (window.open('https://www.google.com', '_blank'))
+  }
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
+    <Card sx={{ maxWidth: 345 }} onClick={onCardClick}   >
+      
+      <CardHeader 
         
         
-        title={noticia.source.name}
+        title={noticia.title}
         
       />
       <CardMedia
@@ -26,7 +30,7 @@ import Typography from '@mui/material/Typography';
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-        {noticia.title}
+        {noticia.description}
         
         </Typography>
       </CardContent>
@@ -40,6 +44,7 @@ import Typography from '@mui/material/Typography';
 
 
 export const ListaNoticias = ({noticias}) => {
+    
     return noticias.map((noticia) =>{
         return <Noticias noticia ={noticia}/>
     })

@@ -5,14 +5,24 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import BuscadorNoticias from './Pages/PaginaBuscador';
+
+import PaginaNoticias from './Pages/PaginaBuscador';
+import PaginaDetalle from './Pages/PaginaDetalle';
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <BuscadorNoticias/>,
+    element: <PaginaNoticias/>,
   },
+  {
+    path: "/:id",
+    element: <PaginaDetalle/>,
+  },
+  
+  
+  
 ]);
 
 function App() {
