@@ -9,9 +9,10 @@ import Typography from '@mui/material/Typography';
 
 
 
- const Noticias = ({noticia,onChange}) => {
+const Noticias = ({noticia,onChange}) => {
+  
   const onCardClick = ()=> {
-    onChange (window.open('https://www.google.com', '_blank'))
+    onChange (window.open(noticia.url, '_blank'))
   }
   return (
     <Card sx={{ maxWidth: 345 }} onClick={onCardClick}   >

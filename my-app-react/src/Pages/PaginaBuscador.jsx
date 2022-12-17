@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Buscador from "../Components/Buscador/Buscador"
-import CambioDePagina from "../Components/CambioDePagina/CambioDePagina";
+
 import Loading from "../Components/Loading/Loading"
 import  { ListaNoticias } from "../Components/Noticias/Noticias"
 import Paginador from "../Components/Paginacion/Paginacion"

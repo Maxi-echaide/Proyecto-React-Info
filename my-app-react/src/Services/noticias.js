@@ -9,10 +9,3 @@ export const getListadoNoticias = async (criterioBusqueda, paginaActual) => {
     const noticias = await respuesta.json()
     return noticias
 }
-
-export const getNoticia = async idNoticia => {
-    const respuesta = await fetch (`${NEWS_API}?i=${idNoticia}&apikey=${API_KEY}&laguage=es&pageSize=10`)
-    const noticia = await respuesta.json()
-    return noticia
-}
-
