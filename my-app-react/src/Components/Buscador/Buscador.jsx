@@ -9,6 +9,10 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const Buscador = ({onBuscar}) => {
     const [criterioBusqueda, SetCriteriobusqueda] = useState("")
+   
+
+      
+    
     
     return (
         <Paper
