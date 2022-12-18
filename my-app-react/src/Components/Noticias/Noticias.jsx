@@ -14,6 +14,13 @@ const Noticias = ({noticia,onChange}) => {
   const onCardClick = ()=> {
     onChange (window.open(noticia.url, '_blank'))
   }
+
+  const {DateTime} = require("luxon");
+  const getPublished = (date) => {
+    let day = DateTime.fromISO(date).setZone("UTC").toFormat("dd-MM-yyyy")
+    let hour = DateTime.fromISO(date).setZone("UTC").toFormat("hh:mm")
+    return `Publicado el: ${day} a las ${hour} hs`
+  }
   return (
     <Card sx={{ maxWidth: 345 }} onClick={onCardClick}   >
       
@@ -35,7 +42,7 @@ const Noticias = ({noticia,onChange}) => {
         
         </Typography>
       </CardContent>
-      <Typography paragraph>{noticia.publishedAt}</Typography>
+      <Typography paragraph>{getPublished(noticia.publishedAt)}</Typography>
       
     
       
