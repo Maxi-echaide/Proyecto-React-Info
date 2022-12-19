@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 
 
 
+
+
 const Noticias = ({noticia,onChange}) => {
   
   const onCardClick = ()=> {
@@ -22,27 +24,31 @@ const Noticias = ({noticia,onChange}) => {
     return `Publicado el: ${day} a las ${hour} hs`
   }
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={onCardClick}   >
+    
+    <Card sx={{ maxWidth: 408 }} onClick={onCardClick}  	 >
       
       <CardHeader 
         
         
-        title={noticia.title}
+        title={noticia.title} 
         
       />
       <CardMedia
+        
         component="img"
         height="194"
         image={noticia.urlToImage}
-        alt="Paella dish"
+        alt=""
       />
-      <CardContent>
+      <CardContent >
         <Typography variant="body2" color="text.secondary">
         {noticia.description}
         
         </Typography>
-      </CardContent>
-      <Typography paragraph>{getPublished(noticia.publishedAt)}</Typography>
+      </CardContent >
+      <Typography  paragraph>{getPublished(noticia.publishedAt)} 
+      
+      </Typography>
       
     
       
@@ -53,9 +59,19 @@ const Noticias = ({noticia,onChange}) => {
 
 export const ListaNoticias = ({noticias}) => {
     
-    return noticias.map((noticia) =>{
+    return (<section style= {{
+      
+      marginTop: '20px',
+      
+
+    }}>{
+      noticias.map((noticia) =>{
         return <Noticias noticia ={noticia}/>
-    })
+    })}
+
+    </section>)
+    
+        
 }
 
 export default Noticias

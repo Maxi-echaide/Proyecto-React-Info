@@ -43,7 +43,8 @@ const PaginaNoticias = () => {
     
 
      
-        return <Container maxWidth = "sm">
+        return <Container maxWidth = "sm" >
+                
                 <Buscador onBuscar = {onBuscar} />
                 
                 {isLoading && <Loading/>}
@@ -56,3 +57,4 @@ const PaginaNoticias = () => {
 }
 
 export default PaginaNoticias
+

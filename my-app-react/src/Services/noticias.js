@@ -9,3 +9,4 @@ export const getListadoNoticias = async (criterioBusqueda, paginaActual) => {
     const noticias = await respuesta.json()
     return noticias
 }
+
