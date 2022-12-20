@@ -27,7 +27,7 @@ const Noticias = ({noticia,onChange}) => {
     
     <Card sx={{ maxWidth: 408 }} onClick={onCardClick}  	 >
       
-      <CardHeader 
+      <CardHeader sx={{ flexGrow: 0, display: "flex", textAlign:"center" }}
         
         
         title={noticia.title} 
@@ -46,7 +46,7 @@ const Noticias = ({noticia,onChange}) => {
         
         </Typography>
       </CardContent >
-      <Typography  paragraph>{getPublished(noticia.publishedAt)} 
+      <Typography  sx={{ flexGrow: 0, display: "flex", justifyContent:"end", marginRight:"20px" }} paragraph>{getPublished(noticia.publishedAt)} 
       
       </Typography>
       
@@ -59,17 +59,14 @@ const Noticias = ({noticia,onChange}) => {
 
 export const ListaNoticias = ({noticias}) => {
     
-    return (<section style= {{
-      
-      marginTop: '20px',
-      
-
-    }}>{
+    return (<section style={{ marginTop: "25px",
+    
+     }} > {
       noticias.map((noticia) =>{
         return <Noticias noticia ={noticia}/>
     })}
 
-    </section>)
+     </section>)
     
         
 }

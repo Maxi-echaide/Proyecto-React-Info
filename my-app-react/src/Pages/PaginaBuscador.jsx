@@ -1,9 +1,11 @@
+import { Box } from "@mui/material";
 import { Container } from "@mui/system"
 import { useState } from "react"
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Buscador from "../Components/Buscador/Buscador"
-
+import Footer from "../Components/Header y footer/Footer";
+import { Header } from "../Components/Header y footer/header";
 import Loading from "../Components/Loading/Loading"
 import  { ListaNoticias } from "../Components/Noticias/Noticias"
 import Paginador from "../Components/Paginacion/Paginacion"
@@ -44,13 +46,17 @@ const PaginaNoticias = () => {
 
      
         return <Container maxWidth = "sm" >
-                
+                <Header/>
                 <Buscador onBuscar = {onBuscar} />
                 
                 {isLoading && <Loading/>}
                 {noticias&& <ListaNoticias noticias ={noticias} />}
-                {noticias&& <Paginador cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} />}
+                {noticias&& <Paginador  cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} />}
+                
+                <Footer/>   
+            
             </Container>
+            
     
            
     

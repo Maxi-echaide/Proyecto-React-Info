@@ -10,9 +10,10 @@ const Paginador = ({
     }
     return (
     
-        <Pagination 
+        <Pagination sx={{ flexGrow: 0, display:"flex", marginTop:"25px", marginBottom:"80px" }}
+            
             count={cantidadPaginas} 
-            color="secondary" 
+            color="primary" 
             onChange={cambioPagina}
             />
     )

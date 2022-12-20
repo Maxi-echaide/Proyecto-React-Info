@@ -27,16 +27,21 @@ const Buscador = ({onBuscar}) => {
             inputProps={{ 'aria-label': 'Buscar noticias' }}
             value = {criterioBusqueda}
             onChange = {(e) => {SetCriteriobusqueda(e.target.value)}}
+            role="searchbox"
           />
           <IconButton 
                 type="button" 
                 sx={{ p: '10px', alignItems: "center" }} 
                 aria-label="search"
                 onClick = {() => {
-                    onBuscar (criterioBusqueda)
-                }}       
+                  if(criterioBusqueda.length > 2) {
+                    onBuscar(criterioBusqueda)
+                  }
+                }}
+                role="botonBuscar"
+
                 >
-                   
+                  
             <SearchIcon />
           </IconButton>
           
