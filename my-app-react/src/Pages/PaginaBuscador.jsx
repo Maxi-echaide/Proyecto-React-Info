@@ -31,6 +31,7 @@ const PaginaNoticias = () => {
         
         setNoticias(notis);
         setCantidadPaginas(Math.ceil(parseInt(totalResults)/10))
+        console.log(notis)
         setIsLoading(false);
     }
 

@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import PaginaNoticias from './Pages/PaginaBuscador';
+import Error from './Components/errores/error';
 
 
 
@@ -15,7 +16,13 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <PaginaNoticias/>,
-  }
+    errorElement: <Error/>,
+  },
+
+  {
+    path: "/buscador",
+    element: <PaginaNoticias/>,
+  },
   
   
   

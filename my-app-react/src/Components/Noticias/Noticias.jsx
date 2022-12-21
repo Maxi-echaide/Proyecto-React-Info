@@ -63,7 +63,7 @@ export const ListaNoticias = ({noticias}) => {
     
      }} > {
       noticias.map((noticia) =>{
-        return <Noticias noticia ={noticia}/>
+        return <Noticias noticia ={noticia} key={`${noticia.author}+${noticia.title}`}/>
     })}
 
      </section>)

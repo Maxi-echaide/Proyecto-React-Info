@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 export const Header = () => {
     return (
         <Box sx={{ flexGrow: 0 }}>
-        <AppBar position="relative"  sx={{ maxWidth: 408 }}>
+        <AppBar position="relative"  sx={{ maxWidth: "408px" }}>
           <Toolbar variant="dense">
            
             <Typography variant="h6" color="inherit" component="div">
