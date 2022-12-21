@@ -9,28 +9,46 @@ import Typography from '@mui/material/Typography';
 
 
 
- const Noticias = ({noticia}) => {
+
+
+const Noticias = ({noticia,onChange}) => {
+  
+  const onCardClick = ()=> {
+    onChange (window.open(noticia.url, '_blank'))
+  }
+
+  const {DateTime} = require("luxon");
+  const getPublished = (date) => {
+    let day = DateTime.fromISO(date).setZone("UTC").toFormat("dd-MM-yyyy")
+    let hour = DateTime.fromISO(date).setZone("UTC").toFormat("hh:mm")
+    return `Publicado el: ${day} a las ${hour} hs`
+  }
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
+    
+    <Card sx={{ maxWidth: 408 }} onClick={onCardClick}  	 >
+      
+      <CardHeader sx={{ flexGrow: 0, display: "flex", textAlign:"center" }}
         
         
-        title={noticia.source.name}
+        title={noticia.title} 
         
       />
       <CardMedia
+        
         component="img"
         height="194"
         image={noticia.urlToImage}
-        alt="Paella dish"
+        alt=""
       />
-      <CardContent>
+      <CardContent >
         <Typography variant="body2" color="text.secondary">
-        {noticia.title}
+        {noticia.description}
         
         </Typography>
-      </CardContent>
-      <Typography paragraph>{noticia.publishedAt}</Typography>
+      </CardContent >
+      <Typography  sx={{ flexGrow: 0, display: "flex", justifyContent:"end", marginRight:"20px" }} paragraph>{getPublished(noticia.publishedAt)} 
+      
+      </Typography>
       
     
       
@@ -40,9 +58,17 @@ import Typography from '@mui/material/Typography';
 
 
 export const ListaNoticias = ({noticias}) => {
-    return noticias.map((noticia) =>{
-        return <Noticias noticia ={noticia}/>
-    })
+    
+    return (<section style={{ marginTop: "25px",
+    
+     }} > {
+      noticias.map((noticia) =>{
+        return <Noticias noticia ={noticia} key={`${noticia.author}+${noticia.title}`}/>
+    })}
+
+     </section>)
+    
+        
 }
 
 export default Noticias

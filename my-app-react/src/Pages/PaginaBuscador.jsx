@@ -1,56 +1,67 @@
+import { Box } from "@mui/material";
 import { Container } from "@mui/system"
 import { useState } from "react"
-
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Buscador from "../Components/Buscador/Buscador"
+import Footer from "../Components/Header y footer/Footer";
+import { Header } from "../Components/Header y footer/header";
 import Loading from "../Components/Loading/Loading"
 import  { ListaNoticias } from "../Components/Noticias/Noticias"
 import Paginador from "../Components/Paginacion/Paginacion"
 import { getListadoNoticias } from "../Services/noticias"
 
-const BuscadorNoticias = () => {
-    const [noticias, setNoticias] = useState()
-    const[isLoading, setIsLoading] = useState(false)
-    const[cantidadPaginas, setCantidadPaginas] = useState(1)
-    
-    
-     
-    const[criterioBusqueda, setCriteriobusqueda] = useState("")
+const PaginaNoticias = () => {
+    const [noticias, setNoticias] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const [cantidadPaginas, setCantidadPaginas] = useState(1);
+    const [pagina, setPagina] = useState(1);
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const onBuscar = async (criterioBusqueda, pagina=1) => {
-        setIsLoading(true)
-        const {articles: notis, totalResults} = await getListadoNoticias(criterioBusqueda, pagina)
-        setCriteriobusqueda(criterioBusqueda)
-        setNoticias(notis)
-        setCantidadPaginas(Math.ceil(parseInt(totalResults/10)))
-        setIsLoading(false)
-       
+   useEffect(()=>{
+        if(searchParams.get("query")){
+            buscarNoticia(pagina)
+        }
+   },[searchParams,pagina])
+
+
+    const buscarNoticia = async () => {
+        setIsLoading(true);
+        const { articles: notis, totalResults } = await getListadoNoticias(searchParams.get('query'), pagina);
         
-    }   
-
-    const onCambioPagina = (pagina) => {
-            onBuscar(criterioBusqueda, pagina)
-            
-            
+        setNoticias(notis);
+        setCantidadPaginas(Math.ceil(parseInt(totalResults)/10))
+        console.log(notis)
+        setIsLoading(false);
     }
 
-    if(isLoading){
-        return (
-            <Container maxWidth = "sm">
-                <Loading/>
-            </Container>
-    )}
+    const onBuscar = (criterioBusqueda) => {
+        setSearchParams({ query: criterioBusqueda});
+    };
+
+    const onCambioPagina = (pagina) => {
+        setPagina(pagina);
+    };
+
+    
 
      
-        return <Container maxWidth = "sm">
+        return <Container maxWidth = "sm"  >
+                <Header/>
                 <Buscador onBuscar = {onBuscar} />
                 
                 {isLoading && <Loading/>}
-                {noticias&& <ListaNoticias noticias ={noticias}/>}
-                {noticias&& <Paginador cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} />}
+                {noticias&& <ListaNoticias noticias ={noticias} />}
+                {noticias&& <Paginador  cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} />}
+                
+                <Footer/>   
+            
             </Container>
+            
     
            
     
 }
 
-export default BuscadorNoticias
+export default PaginaNoticias
+

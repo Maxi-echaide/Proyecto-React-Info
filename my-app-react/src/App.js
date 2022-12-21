@@ -5,14 +5,27 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import BuscadorNoticias from './Pages/PaginaBuscador';
+
+import PaginaNoticias from './Pages/PaginaBuscador';
+import Error from './Components/errores/error';
+
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <BuscadorNoticias/>,
+    element: <PaginaNoticias/>,
+    errorElement: <Error/>,
   },
+
+  {
+    path: "/buscador",
+    element: <PaginaNoticias/>,
+  },
+  
+  
+  
 ]);
 
 function App() {
